@@ -1,0 +1,8 @@
+---
+- hosts: all
+  become: true
+  roles:
+  - dhlproxy
+
+  environment:
+          http_proxy: http://185.46.212.32:10123

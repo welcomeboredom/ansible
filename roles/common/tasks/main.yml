@@ -1,0 +1,6 @@
+- name: "Installing VIM"
+  apt: pkg=vim state=present
+
+- name: "Installing sysstat"
+  apt: pkg=sysstat state=present
+

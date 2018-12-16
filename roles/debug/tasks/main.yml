@@ -1,0 +1,3 @@
+- name: Print test_var
+  debug:
+    msg: "Variable: {{ test_var }}"

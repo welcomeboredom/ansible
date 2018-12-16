@@ -1,0 +1,3 @@
+---
+test_var: group_var.z.all
+database_server: storage.example.org

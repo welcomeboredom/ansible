@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  roles:
+  - noproxy
+  - debug
+
+
+    #  environment:
+    #          http_proxy: http://185.46.212.32:10123

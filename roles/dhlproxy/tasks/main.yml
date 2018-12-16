@@ -1,0 +1,4 @@
+- name: configuring apt proxy
+  template: src=apt.conf.j2 dest=/etc/apt/apt.conf
+- name: configuring wget proxy
+  template: src=wgetrc.j2 dest=/etc/wgetrc

@@ -1,0 +1,38 @@
+---
+- hosts: webservers
+  vars:
+    http_port: 80
+    max_clients: 200
+    #  remote_user: root
+  tasks:
+  - name: ensure apache is at the latest version
+    apt:
+      name: apache2
+      state: latest
+      #  - name: write the apache config file
+      #    template:
+      #      src: /srv/httpd.j2
+      #      dest: /etc/httpd.conf
+      #    notify:
+      #    - restart apache
+  - name: enabled mod_rewrite
+    apache2_module:
+      name: rewrite
+      state: present
+    notify:
+      - restart apache2
+     # test
+  - name: ensure apache is running
+    service:
+      name: apache2
+      state: started
+      #  handlers:
+      #    - name: restart apache
+      #      service:
+      #        name: httpd
+      #        state: restarted
+  handlers:
+  - name: restart apache2
+    service:
+      name: apache2
+      state: restarted
