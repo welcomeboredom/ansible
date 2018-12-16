@@ -1,6 +1,23 @@
 - name: "Installing VIM"
-  apt: pkg=vim state=present
+  apt: 
+    pkg: vim 
+    state: present
 
 - name: "Installing sysstat"
-  apt: pkg=sysstat state=present
+  apt: 
+    pkg: sysstat 
+    state: present
+
+- name: "Installing OhMyZSH shell for the root user"
+  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" 
+  args:
+    chdir: ~/
+    creates: .zshrc
+  
+- name: "modifies .zshrc to contain correct theme"
+  lineinfile: 
+    path: ~/.zshrc
+    regexp: '^ZSH_THEME='
+    line: 'ZSH_THEME=gentoo'
+
 
